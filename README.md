@@ -1,2 +1,3 @@
 # An official website of >ItzKonst<
-<MIT LICENSE>
+
+|MIT LICENSE|
