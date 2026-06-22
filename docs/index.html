@@ -133,7 +133,7 @@
       box-shadow: 0 28px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 70, 85, 0.25);
     }
 
-    /* Иконка карточки – теперь строгие символы вместо эмодзи */
+    /* Иконка карточки */
     .card-icon {
       font-size: 3.5rem;
       margin-bottom: 1.2rem;
@@ -216,6 +216,18 @@
       transform: translateX(3px);
     }
 
+    /* Стиль для Telegram-кнопки */
+    .btn.telegram {
+      background: #2AABEE;
+      box-shadow: 0 6px 18px rgba(42, 171, 238, 0.5);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .btn.telegram:hover {
+      background: #3db4f0;
+      box-shadow: 0 10px 24px rgba(42, 171, 238, 0.7);
+    }
+
     /* Карточка-заглушка (будущие проекты) */
     .card.coming-soon {
       opacity: 0.85;
@@ -239,8 +251,6 @@
       backdrop-filter: blur(4px);
     }
 
-    /* Нижний колонтитул отсутствует, как и просили */
-
     @media (max-width: 700px) {
       body {
         padding: 1rem;
@@ -262,7 +272,7 @@
     <!-- Сетка с карточками сайтов -->
     <div class="cards-grid">
       
-      <!-- Карточка: Uncopylocked Roblox Games (активная страница) -->
+      <!-- Карточка: Uncopylocked Roblox Games -->
       <div class="card">
         <div class="card-icon">🎮</div>
         <h2>Uncopylocked</h2>
@@ -275,7 +285,20 @@
         </a>
       </div>
 
-      <!-- Карточка: будущий проект -->
+      <!-- Карточка: Telegram -->
+      <div class="card">
+        <div class="card-icon">✈️</div>
+        <h2>Telegram</h2>
+        <span class="card-tag">Канал</span>
+        <p>
+          Новости, эксплоиты, анонсы и прямой контакт. Подписывайся, чтобы не пропустить обновления.
+        </p>
+        <a href="https://t.me/itzkonstexploits" target="_blank" rel="noopener noreferrer" class="btn telegram">
+          Перейти <i>→</i>
+        </a>
+      </div>
+
+      <!-- Карточка: Tools -->
       <div class="card coming-soon">
         <div class="card-icon">🛠️</div>
         <h2>Tools</h2>
@@ -288,7 +311,7 @@
         </a>
       </div>
 
-      <!-- Карточка: еще один будущий сайт -->
+      <!-- Карточка: 1tzKonstHUB -->
       <div class="card coming-soon">
         <div class="card-icon">🧩</div>
         <h2>1tzKonstHUB</h2>
@@ -301,7 +324,6 @@
         </a>
       </div>
     </div>
-    <!-- Футер полностью удалён -->
   </div>
 </body>
 </html>
