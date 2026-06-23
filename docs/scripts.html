@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROBLOX Scripts — itzkonstHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0b0e14;
+            color: #e0e6f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #1a1f2b;
+            border-radius: 24px;
+            padding: 35px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid #2d3548;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f0b3ff, #7aa9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-badge {
+            background: #2f3b57;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #b0c6f0;
+            border: 1px solid #3d4a6a;
+        }
+
+        .subtitle {
+            color: #8995b0;
+            font-size: 15px;
+            margin-bottom: 28px;
+            border-left: 3px solid #4c6b9c;
+            padding: 10px 16px;
+            background: #111720;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.5;
+        }
+
+        .script-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .script-item {
+            background: #131a24;
+            border-radius: 16px;
+            padding: 18px 22px;
+            border: 1px solid #2b354a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            transition: 0.2s;
+        }
+
+        .script-item:hover {
+            border-color: #3d4a6a;
+            background: #161e2a;
+        }
+
+        .script-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .script-icon {
+            font-size: 22px;
+        }
+
+        .script-name {
+            font-weight: 600;
+            font-size: 17px;
+            color: #c8d2e6;
+        }
+
+        .script-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 3px 12px;
+            border-radius: 60px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-purple {
+            background: #3d2a5a;
+            color: #c8a0f0;
+        }
+
+        .badge-green {
+            background: #1d5a3a;
+            color: #7ddfb0;
+        }
+
+        .badge-blue {
+            background: #1a3a5a;
+            color: #7aa9ff;
+        }
+
+        .script-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #29344b;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #dce3f5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #38445f;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background: #364263;
+            transform: scale(1.02);
+        }
+
+        .btn-primary {
+            background: #4a6cf7;
+            border-color: #5f7cf8;
+            color: white;
+            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #5f7cf8;
+        }
+
+        .btn-secondary {
+            background: #2a3450;
+            border-color: #3d4a6a;
+        }
+
+        .btn-secondary:hover {
+            background: #364263;
+        }
+
+        .status-bar {
+            margin-top: 24px;
+            background: #0d121c;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-size: 14px;
+            color: #7d8db0;
+            border: 1px solid #202a3c;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background: #4a6cf7;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .status-dot.success {
+            background: #7ddfb0;
+        }
+
+        .status-text {
+            flex: 1;
+        }
+
+        .status-text.ok { color: #7ddfb0; }
+        .status-text.error { color: #f29b9b; }
+
+        @media (max-width: 600px) {
+            .container { padding: 16px; }
+            h1 { font-size: 22px; }
+            .script-item { padding: 14px 16px; flex-direction: column; align-items: stretch; }
+            .script-info { flex-wrap: wrap; }
+            .script-actions { justify-content: flex-start; }
+            .btn { padding: 6px 14px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📜 Scripts List</h1>
+            <span class="header-badge">⚡ 1 скрипт</span>
+        </div>
+        <div class="subtitle">
+            Список скриптов для ROBLOX. Нажми «Копировать», чтобы получить код.
+        </div>
+
+        <!-- Script List -->
+        <div class="script-list">
+            <!-- Script 1: itzkonstHub -->
+            <div class="script-item">
+                <div class="script-info">
+                    <span class="script-icon">🔮</span>
+                    <span class="script-name">itzkonstHub</span>
+                    <div class="script-tags">
+                        <span class="badge badge-purple">#OBFUSCATED</span>
+                        <span class="badge badge-green">v1.0</span>
+                    </div>
+                </div>
+                <div class="script-actions">
+                    <button class="btn btn-secondary" onclick="copyScript()">📋 Копировать</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="status-bar">
+            <span class="status-dot success" id="statusDot"></span>
+            <span class="status-text ok" id="statusText">✅ Готово. Нажми «Копировать», чтобы получить код.</span>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_CODE = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/itzkonstCreator/itzkonstCreator.github.io/refs/heads/main/docs/itzkonsthub.lua", true))()';
+
+        const statusText = document.getElementById('statusText');
+        const statusDot = document.getElementById('statusDot');
+
+        function setStatus(text, isOk = true) {
+            statusText.textContent = text;
+            statusText.className = 'status-text ' + (isOk ? 'ok' : 'error');
+            statusDot.className = 'status-dot ' + (isOk ? 'success' : 'error');
+        }
+
+        function copyScript() {
+            navigator.clipboard.writeText(SCRIPT_CODE).then(() => {
+                setStatus('✅ Код скопирован в буфер обмена!', true);
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = SCRIPT_CODE;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                setStatus('✅ Код скопирован (старый метод).', true);
+            });
+        }
+
+        // Стартовое сообщение
+        setStatus('✅ Готово. Нажми «Копировать», чтобы получить код.', true);
+    </script>
+</body>
+</html>

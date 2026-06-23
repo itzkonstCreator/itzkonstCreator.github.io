@@ -228,29 +228,6 @@
       box-shadow: 0 10px 24px rgba(42, 171, 238, 0.7);
     }
 
-    /* Карточка-заглушка (будущие проекты) */
-    .card.coming-soon {
-      opacity: 0.85;
-      border: 1px dashed rgba(255, 255, 255, 0.25);
-      background: rgba(18, 20, 28, 0.6);
-    }
-
-    .card.coming-soon:hover {
-      border-color: rgba(255, 255, 255, 0.35);
-      opacity: 1;
-    }
-
-    .coming-badge {
-      background: rgba(255,255,255,0.15);
-      color: #ddd;
-      font-weight: 600;
-      padding: 0.3rem 1.2rem;
-      border-radius: 2rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.4px;
-      backdrop-filter: blur(4px);
-    }
-
     @media (max-width: 700px) {
       body {
         padding: 1rem;
@@ -298,31 +275,19 @@
         </a>
       </div>
 
-      <!-- Карточка: Tools -->
-      <div class="card coming-soon">
+      <!-- Карточка: Tools (активна, ведёт на /scripts) -->
+      <div class="card">
         <div class="card-icon">🛠️</div>
         <h2>Tools</h2>
-        <span class="coming-badge">Скоро</span>
+        <span class="card-tag">Скрипты</span>
         <p>
           Скрипты для ROBLOX (solara).
         </p>
-        <a href="#" class="btn" style="background: #2f3142; box-shadow: none; pointer-events: none; opacity: 0.8;">
-          Ожидается <i>🔒</i>
+        <a href="/scripts" class="btn">
+          Перейти <i>→</i>
         </a>
       </div>
 
-      <!-- Карточка: 1tzKonstHUB -->
-      <div class="card coming-soon">
-        <div class="card-icon">🧩</div>
-        <h2>1tzKonstHUB</h2>
-        <span class="coming-badge">В планах</span>
-        <p>
-          скоро.
-        </p>
-        <a href="#" class="btn" style="background: #2f3142; box-shadow: none; pointer-events: none; opacity: 0.8;">
-          Скоро <i>⏳</i>
-        </a>
-      </div>
     </div>
   </div>
 </body>
