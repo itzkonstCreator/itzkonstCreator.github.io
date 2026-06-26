@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>⚡ Single Word WPM | Reset Each Round</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(150deg, #0b0f1c 0%, #1a1f33 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 1.2rem;
+      margin: 0;
+    }
+
+    .glass-card {
+      background: rgba(20, 25, 45, 0.75);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-radius: 2.8rem;
+      box-shadow: 0 35px 55px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2.4rem 2rem;
+      width: 100%;
+      max-width: 580px;
+      color: #eef5ff;
+      transition: all 0.2s ease;
+    }
+
+    h1 {
+      font-weight: 500;
+      font-size: 2rem;
+      letter-spacing: 1.5px;
+      text-align: center;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #cfdeff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8b9bc0;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      font-size: 0.95rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+      padding-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    .stats-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 14, 26, 0.6);
+      border-radius: 3rem;
+      padding: 0.8rem 1.8rem;
+      margin-bottom: 2.4rem;
+      backdrop-filter: blur(12px);
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.12);
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #a0b3e0;
+      font-weight: 500;
+    }
+
+    .stat-value {
+      font-size: 1.9rem;
+      font-weight: 650;
+      color: #ffffff;
+      line-height: 1;
+      text-shadow: 0 0 14px #3f6bff80;
+    }
+
+    .word-zone {
+      background: #0b0f1c;
+      border-radius: 2rem;
+      padding: 2.6rem 1.5rem;
+      margin: 1.2rem 0 1.7rem;
+      text-align: center;
+      box-shadow: inset 0 10px 24px rgba(0, 0, 0, 0.9), 0 12px 28px rgba(0, 20, 70, 0.8);
+      border: 1px solid rgba(80, 140, 255, 0.18);
+    }
+
+    .current-word {
+      font-size: 4.4rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #f0f5ff;
+      text-shadow: 0 0 28px #2f5aff, 0 0 10px #000;
+      word-break: break-word;
+      line-height: 1.2;
+    }
+
+    .input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin: 1rem 0 1.6rem;
+    }
+
+    #userInput {
+      background: #12172f;
+      border: 2px solid #2f3b66;
+      border-radius: 3rem;
+      padding: 1rem 1.8rem;
+      font-size: 1.4rem;
+      color: white;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.7);
+      width: 100%;
+    }
+
+    #userInput:focus {
+      border-color: #6080ff;
+      box-shadow: 0 0 22px #2f4acb, inset 0 2px 10px black;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 0.9rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: #1e2848;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 0.85rem 1.9rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.7px;
+      color: #dbe4ff;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: #2f3d6b;
+      border-color: #6d8aff;
+      color: white;
+      box-shadow: 0 0 20px #3f5cd0;
+      transform: scale(1.02);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      background: #1a1f32;
+      border-color: #2c334a;
+    }
+
+    .message-area {
+      margin-top: 1.3rem;
+      min-height: 2.6rem;
+      font-weight: 400;
+      color: #cbd5ff;
+      text-align: center;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: 0.2s;
+    }
+
+    .correct-msg {
+      color: #8aff8a;
+      text-shadow: 0 0 8px #1dc71d;
+    }
+
+    .incorrect-msg {
+      color: #ff8a8a;
+      text-shadow: 0 0 10px #c0392b;
+    }
+
+    @media (max-width: 450px) {
+      .glass-card {
+        padding: 1.8rem 1.2rem;
+      }
+      .current-word {
+        font-size: 3.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <h1>
+      <span>⌨️</span> Single Word WPM
+    </h1>
+    <div class="subtitle">
+      <span>⏱️ timer & WPM reset each word</span>
+    </div>
+
+    <!-- Stats: WPM только для последнего слова, общее количество слов, точность -->
+    <div class="stats-panel">
+      <div class="stat">
+        <span class="stat-label">WPM</span>
+        <span class="stat-value" id="wpmDisplay">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Words</span>
+        <span class="stat-value" id="wordCountDisplay">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Accuracy</span>
+        <span class="stat-value" id="accuracyDisplay">—</span>
+      </div>
+    </div>
+
+    <!-- Target word display -->
+    <div class="word-zone">
+      <div class="current-word" id="targetWord">ready?</div>
+    </div>
+
+    <!-- Input & controls -->
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="type the word..." autofocus autocomplete="off" autocapitalize="off" spellcheck="false">
+      <div class="button-group">
+        <button class="btn" id="nextWordBtn" disabled>⏭ Next Word</button>
+        <button class="btn" id="resetBtn">🔄 Reset All</button>
+      </div>
+    </div>
+
+    <!-- Feedback message -->
+    <div class="message-area" id="messageBox">
+      <span>⌛ Start typing</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- CONSTANTS ----------
+      const WORDS_FILE = 'words.txt';   // файл должен лежать рядом с html
+      
+      // ---------- GLOBAL STATE ----------
+      const state = {
+        wordList: [],                // массив слов из words.txt
+        targetWord: 'ready?',
+        startTime: null,            // timestamp начала текущего слова
+        currentWordLocked: false,   // после подтверждения (правильно/неправильно)
+        totalCorrect: 0,
+        totalAttempts: 0,
+        lastWordWPM: 0,             // WPM именно для последнего завершённого слова
+        timerInterval: null,
+      };
+
+      // ---------- DOM ELEMENTS ----------
+      const targetWordEl = document.getElementById('targetWord');
+      const userInputEl = document.getElementById('userInput');
+      const nextWordBtn = document.getElementById('nextWordBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const wpmDisplayEl = document.getElementById('wpmDisplay');
+      const wordCountDisplayEl = document.getElementById('wordCountDisplay');
+      const accuracyDisplayEl = document.getElementById('accuracyDisplay');
+      const messageBoxEl = document.getElementById('messageBox');
+
+      // ---------- UTILS ----------
+      function stopTimer() {
+        if (state.timerInterval) {
+          clearInterval(state.timerInterval);
+          state.timerInterval = null;
+        }
+      }
+
+      // Динамический таймер для обновления WMP во время набора (только пока слово не завершено)
+      function startLiveTimer() {
+        if (state.timerInterval) return;
+        if (!state.startTime) return;
+        
+        state.timerInterval = setInterval(() => {
+          if (state.startTime && !state.currentWordLocked) {
+            updateLiveWPM();
+          } else {
+            stopTimer();
+          }
+        }, 120);
+      }
+
+      // WPM для текущего активного слова (live)
+      function calculateCurrentWPM() {
+        if (!state.startTime || state.currentWordLocked) {
+          // если слово завершено, показываем сохранённый lastWordWPM
+          return state.lastWordWPM;
+        }
+        const now = Date.now();
+        const elapsedMinutes = (now - state.startTime) / 60000; // минуты
+        if (elapsedMinutes <= 0) return 0;
+        // WPM = 1 слово / время в минутах (поскольку считаем одно слово)
+        return Math.round(1 / elapsedMinutes);
+      }
+
+      function updateLiveWPM() {
+        const wpm = calculateCurrentWPM();
+        wpmDisplayEl.textContent = wpm;
+      }
+
+      // Обновить WPM на дисплее (используется после завершения слова)
+      function setWPMDisplay(value) {
+        wpmDisplayEl.textContent = value;
+      }
+
+      // Обновить статистику (слова, точность)
+      function updateStatsUI() {
+        wordCountDisplayEl.textContent = state.totalCorrect;
+        if (state.totalAttempts === 0) {
+          accuracyDisplayEl.textContent = '—';
+        } else {
+          const acc = Math.round((state.totalCorrect / state.totalAttempts) * 100);
+          accuracyDisplayEl.textContent = acc + '%';
+        }
+      }
+
+      // Полный сброс текущего слова (таймер, блокировка, поле)
+      function resetCurrentWordState() {
+        stopTimer();
+        state.startTime = null;
+        state.currentWordLocked = false;
+        userInputEl.disabled = false;
+        userInputEl.value = '';
+        nextWordBtn.disabled = true;
+        // Не трогаем lastWordWPM, пока не завершим новое слово
+      }
+
+      // Загрузить новое слово (и сбросить таймер/WPM для нового раунда)
+      function loadNewWord() {
+        stopTimer();
+        
+        // Если слово не было завершено, но начато – не засчитываем, просто теряем попытку.
+        // Сбрасываем все признаки текущего слова.
+        state.startTime = null;
+        state.currentWordLocked = false;
+        userInputEl.disabled = false;
+        userInputEl.value = '';
+        nextWordBtn.disabled = true;
+        
+        // Выбираем случайное слово из загруженного списка
+        if (state.wordList.length > 0) {
+          const randomIndex = Math.floor(Math.random() * state.wordList.length);
+          state.targetWord = state.wordList[randomIndex];
+        } else {
+          // fallback на случай, если файл не загрузился
+          state.targetWord = 'typing';
+        }
+        
+        targetWordEl.textContent = state.targetWord;
+        
+        // ВАЖНО: сбрасываем отображаемый WPM на 0, так как таймер нового слова ещё не запущен
+        state.lastWordWPM = 0;
+        setWPMDisplay(0);
+        
+        messageBoxEl.innerHTML = '<span>✍️ Type the word above</span>';
+        messageBoxEl.className = 'message-area';
+        
+        userInputEl.focus();
+      }
+
+      // Действие при правильном ответе
+      function handleCorrect() {
+        if (state.currentWordLocked) return;
+        stopTimer();
+        
+        // Вычисляем WPM для этого слова
+        let wordWPM = 0;
+        if (state.startTime) {
+          const elapsedMinutes = (Date.now() - state.startTime) / 60000;
+          if (elapsedMinutes > 0) {
+            wordWPM = Math.round(1 / elapsedMinutes);
+          }
+        }
+        
+        state.lastWordWPM = wordWPM;
+        state.totalCorrect++;
+        state.totalAttempts++;
+        
+        // Блокировка
+        state.currentWordLocked = true;
+        userInputEl.disabled = true;
+        nextWordBtn.disabled = false;
+        state.startTime = null; // таймер больше не нужен
+        
+        setWPMDisplay(wordWPM);
+        updateStatsUI();
+        
+        messageBoxEl.innerHTML = '<span class="correct-msg">✓ Correct! WPM recorded.</span>';
+        messageBoxEl.className = 'message-area correct-msg';
+        nextWordBtn.focus();
+      }
+
+      function handleIncorrect(attemptedWord) {
+        if (state.currentWordLocked) return;
+        stopTimer();
+        
+        // Даже при ошибке считаем WPM? По условию тестируется одно слово, 
+        // но WPM обычно отражает скорость правильного ввода. 
+        // Покажем WPM = 0 для ошибки, либо можно показать скорость набора неверного слова.
+        // Логичнее: при ошибке WPM за это слово = 0 (не засчитывается как правильное слово).
+        const wordWPM = 0;
+        state.lastWordWPM = wordWPM;
+        
+        state.totalAttempts++;
+        
+        state.currentWordLocked = true;
+        userInputEl.disabled = true;
+        nextWordBtn.disabled = false;
+        state.startTime = null;
+        
+        setWPMDisplay(0);
+        updateStatsUI();
+        
+        messageBoxEl.innerHTML = `<span class="incorrect-msg">✗ Incorrect. Expected: «${state.targetWord}», you typed: «${attemptedWord}»</span>`;
+        messageBoxEl.className = 'message-area incorrect-msg';
+        nextWordBtn.focus();
+      }
+
+      // Проверка ввода (по Enter)
+      function checkInput() {
+        if (state.currentWordLocked) {
+          messageBoxEl.innerHTML = '<span>🔒 Word already submitted. Press Next Word.</span>';
+          return;
+        }
+        
+        const inputText = userInputEl.value.trim();
+        if (inputText === '') {
+          messageBoxEl.innerHTML = '<span>⚠️ Please type the word first.</span>';
+          userInputEl.focus();
+          return;
+        }
+        
+        // Если таймер ещё не запущен (вдруг), запускаем сейчас
+        if (!state.startTime) {
+          state.startTime = Date.now();
+          startLiveTimer();
+        }
+        
+        if (inputText.toLowerCase() === state.targetWord.toLowerCase()) {
+          handleCorrect();
+        } else {
+          handleIncorrect(inputText);
+        }
+      }
+
+      // Переход к следующему слову (кнопка Next Word)
+      function goToNextWord() {
+        if (!state.currentWordLocked) {
+          messageBoxEl.innerHTML = '<span>👆 Press Enter to submit the word first.</span>';
+          userInputEl.focus();
+          return;
+        }
+        loadNewWord();
+      }
+
+      // Полный сброс всей статистики и слова
+      function fullReset() {
+        stopTimer();
+        state.totalCorrect = 0;
+        state.totalAttempts = 0;
+        state.lastWordWPM = 0;
+        
+        // Сброс текущего слова и загрузка нового
+        state.currentWordLocked = false;
+        state.startTime = null;
+        userInputEl.disabled = false;
+        userInputEl.value = '';
+        nextWordBtn.disabled = true;
+        
+        // Выбираем новое слово из списка
+        if (state.wordList.length > 0) {
+          const randomIndex = Math.floor(Math.random() * state.wordList.length);
+          state.targetWord = state.wordList[randomIndex];
+        } else {
+          state.targetWord = 'start';
+        }
+        targetWordEl.textContent = state.targetWord;
+        
+        setWPMDisplay(0);
+        updateStatsUI();
+        messageBoxEl.innerHTML = '<span>🔄 Reset complete. New word.</span>';
+        messageBoxEl.className = 'message-area';
+        userInputEl.focus();
+      }
+
+      // --- Загрузка слов из words.txt ---
+      async function loadWordList() {
+        try {
+          const response = await fetch(WORDS_FILE);
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${WORDS_FILE} (status ${response.status})`);
+          }
+          const text = await response.text();
+          // Разбиваем по строкам, убираем пустые, обрезаем пробелы
+          const words = text
+            .split(/\r?\n/)
+            .map(line => line.trim())
+            .filter(word => word.length > 0);
+          
+          if (words.length === 0) {
+            throw new Error('words.txt is empty');
+          }
+          
+          state.wordList = words;
+          // После успешной загрузки инициализируем первое слово
+          fullReset(); // Это установит случайное слово из списка
+          messageBoxEl.innerHTML = '<span>✅ Words loaded. Start typing!</span>';
+        } catch (error) {
+          console.error('Error loading words.txt:', error);
+          // Fallback-список, чтобы сайт работал даже без файла
+          state.wordList = [
+            "apple", "house", "light", "storm", "bridge", "cloud", "stone", "flame",
+            "ocean", "tiger", "eagle", "swift", "brain", "focus", "crystal", "shadow",
+            "planet", "rocket", "garden", "forest"
+          ];
+          messageBoxEl.innerHTML = '<span>⚠️ words.txt not found. Using built-in list.</span>';
+          // Запускаем с fallback-словами
+          fullReset();
+        }
+      }
+
+      // --- Обработчики событий ---
+      userInputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (state.currentWordLocked) {
+            messageBoxEl.innerHTML = '<span>⏩ Press "Next Word" to continue</span>';
+            nextWordBtn.focus();
+            return;
+          }
+          checkInput();
+        }
+      });
+
+      // Запуск таймера при первом вводе символа
+      userInputEl.addEventListener('input', () => {
+        if (state.currentWordLocked) return;
+        if (!state.startTime && userInputEl.value.length > 0) {
+          state.startTime = Date.now();
+          startLiveTimer();
+          updateLiveWPM();
+        }
+        // Если поле очистили, таймер продолжает идти (время пошло)
+      });
+
+      nextWordBtn.addEventListener('click', goToNextWord);
+      resetBtn.addEventListener('click', fullReset);
+
+      // Фокус на поле при клике на карточку
+      document.addEventListener('click', (e) => {
+        if (!state.currentWordLocked && document.activeElement !== userInputEl) {
+          if (e.target.closest('.glass-card')) {
+            userInputEl.focus();
+          }
+        }
+      });
+
+      // Старт приложения: загружаем слова
+      loadWordList();
+
+      // Очистка таймера при уходе
+      window.addEventListener('beforeunload', () => {
+        stopTimer();
+      });
+    })();
+  </script>
+</body>
+</html>
