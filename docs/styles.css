@@ -1135,10 +1135,22 @@ h1 {
   color: #ffffff !important;
 }
 
+.card-mini-content h3,
+.card-mini-content h3:visited,
+.card-mini:hover .card-mini-content h3 {
+  color: #ffffff !important;
+}
+
 .card-mini-content p {
   font-size: 0.85rem;
   color: #a0a5b5 !important;
   margin: 0;
+}
+
+.card-mini-content p,
+.card-mini-content p:visited,
+.card-mini:hover .card-mini-content p {
+  color: #a0a5b5 !important;
 }
 
 /* Special card styles */
