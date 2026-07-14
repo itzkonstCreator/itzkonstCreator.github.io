@@ -36,9 +36,6 @@
   
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="styles.css">
-  
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" as="style">
 </head>
 <body>
   <!-- Navigation -->
@@ -47,6 +44,8 @@
       <a href="/" class="nav-logo">⚡ 1tzKonst</a>
       <nav class="nav-links">
         <a href="#projects" class="nav-link">Проекты</a>
+        <a href="https://github.com/itzkonstCreator" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
+        <a href="https://www.youtube.com/@Itzkonst" target="_blank" rel="noopener noreferrer" class="nav-link">YouTube</a>
       </nav>
     </div>
   </header>
@@ -55,51 +54,66 @@
     <div class="header">
       <div class="creator-badge">⚡ 1tzKonst</div>
       <h1>1tzKonst</h1>
-      <p class="subtitle">Проекты, инструменты и открытые решения для ROBLOX разработчиков.</p>
+      <p class="subtitle">Проекты, инструменты и открытые решения</p>
     </div>
     
-    <!-- Сетка с карточками сайтов -->
+    <!-- Сетка с карточками -->
     <div class="cards-grid" id="projects">
       
-      <!-- Карточка: Uncopylocked Roblox Games -->
-      <div class="card">
-        <div class="card-icon">🎮</div>
-        <h2>Uncopylocked</h2>
-        <span class="card-tag">Roblox Games</span>
-        <p>
-          Открытая коллекция анкопированных игр Roblox. Исследуй, вдохновляйся и используй готовые механики.
-        </p>
-        <a href="uncopylocked.html" class="btn">
-          Перейти <i>→</i>
-        </a>
-      </div>
+      <!-- Uncopylocked Games -->
+      <a href="uncopylocked.html" class="card-mini">
+        <div class="card-mini-icon">🎮</div>
+        <div class="card-mini-content">
+          <h3>Uncopylocked</h3>
+          <p>Roblox Games</p>
+        </div>
+      </a>
       
+      <!-- Scripts -->
+      <a href="scripts.html" class="card-mini">
+        <div class="card-mini-icon">🛠️</div>
+        <div class="card-mini-content">
+          <h3>Scripts</h3>
+          <p>ROBLOX скрипты</p>
+        </div>
+      </a>
       
-      <!-- Карточка: Scripts -->
-      <div class="card">
-        <div class="card-icon">🛠️</div>
-        <h2>Scripts</h2>
-        <span class="card-tag">ROBLOX Scripts</span>
-        <p>
-          Скрипты для ROBLOX. Легко копируй и вставляй в свой executor.
-        </p>
-        <a href="scripts.html" class="btn">
-          Перейти <i>→</i>
-        </a>
-      </div>
+      <!-- WPM Test -->
+      <a href="wpmtest.html" class="card-mini">
+        <div class="card-mini-icon">⌨️</div>
+        <div class="card-mini-content">
+          <h3>WPM Test</h3>
+          <p>Скорость печати</p>
+        </div>
+      </a>
       
-      <!-- Карточка: WPM Test -->
-      <div class="card">
-        <div class="card-icon">⌨️</div>
-        <h2>WPM Test</h2>
-        <span class="card-tag">Тест скорости</span>
-        <p>
-          Проверь свою скорость печати. Узнай, сколько слов в минуту ты набираешь.
-        </p>
-        <a href="wpmtest.html" class="btn wpm">
-          Перейти <i>→</i>
-        </a>
-      </div>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@Itzkonst" target="_blank" rel="noopener noreferrer" class="card-mini card-mini-youtube">
+        <div class="card-mini-icon">▶️</div>
+        <div class="card-mini-content">
+          <h3>YouTube</h3>
+          <p>Видео и туториалы</p>
+        </div>
+      </a>
+      
+      <!-- GitHub -->
+      <a href="https://github.com/itzkonstCreator" target="_blank" rel="noopener noreferrer" class="card-mini card-mini-github">
+        <div class="card-mini-icon">📦</div>
+        <div class="card-mini-content">
+          <h3>GitHub</h3>
+          <p>Исходный код</p>
+        </div>
+      </a>
+      
+      <!-- About -->
+      <a href="about.html" class="card-mini">
+        <div class="card-mini-icon">👤</div>
+        <div class="card-mini-content">
+          <h3>About</h3>
+          <p>О проекте</p>
+        </div>
+      </a>
+      
     </div>
   </div>
   
@@ -108,7 +122,8 @@
     <div class="container">
       <p>© 2026 1tzKonst. Все права защищены.</p>
       <p style="margin-top: var(--spacing-xs);">
-        <a href="https://github.com/itzkonstCreator" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/itzkonstCreator" target="_blank" rel="noopener noreferrer">GitHub</a> • 
+        <a href="https://www.youtube.com/@Itzkonst" target="_blank" rel="noopener noreferrer">YouTube</a>
       </p>
     </div>
   </footer>
