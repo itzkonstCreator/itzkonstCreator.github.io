@@ -1094,13 +1094,13 @@ h1 {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: var(--bg-card);
+  background: rgba(20, 22, 30, 0.85);
   backdrop-filter: blur(16px);
   border-radius: 1.2rem;
   border: 1px solid var(--border-color);
   padding: 1rem 1.2rem;
   text-decoration: none;
-  color: var(--text-primary);
+  color: #ffffff !important;
   transition: all 0.25s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   min-width: 200px;
@@ -1112,6 +1112,7 @@ h1 {
   transform: translateY(-4px);
   border-color: var(--border-accent);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 70, 85, 0.15);
+  color: #ffffff !important;
 }
 
 .card-mini-icon {
@@ -1119,6 +1120,7 @@ h1 {
   width: 50px;
   height: 50px;
   display: flex;
+
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.05);
@@ -1130,12 +1132,12 @@ h1 {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.2rem;
-  color: var(--text-primary);
+  color: #ffffff !important;
 }
 
 .card-mini-content p {
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: #a0a5b5 !important;
   margin: 0;
 }
 
