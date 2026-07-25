@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HotCraft — Minecraft сервер</title>
     <style>
-        /* Все стили уже здесь, внешний CSS не нужен */
+        /* Все стили остаются без изменений (опущены для краткости, но они есть в предыдущих версиях) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
@@ -469,20 +469,70 @@
         alert(`Для покупки пакета "${pkg}" (${price} ₽) напишите в Telegram:\n@itzkonstofficial или @Alex_Galka`);
     }
 
+    // ===== ОБНОВЛЁННАЯ ФУНКЦИЯ С ДВУМЯ API =====
     async function updateOnline() {
         const el = document.getElementById('onlineCount');
-        try {
-            const resp = await fetch(`https://api.mcsrvstat.us/3/hotcraftofc.aternos.me:33587`);
-            const data = await resp.json();
-            el.textContent = data.online ? data.players.online : '0';
-        } catch {
-            el.textContent = '?';
+        el.classList.add('updating');
+
+        // Список API для проверки
+        const apis = [
+            'https://api.mcsrvstat.us/3/hotcraftofc.aternos.me:33587',
+            'http://mcapi.us/server/status?ip=hotcraftofc.aternos.me&port=33587'
+        ];
+
+        let success = false;
+
+        for (const url of apis) {
+            try {
+                console.log(`Пытаюсь получить данные с: ${url}`);
+                const resp = await fetch(url);
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const data = await resp.json();
+
+                // Определяем, какой формат ответа
+                let online = false;
+                let players = 0;
+
+                if (data.online !== undefined) {
+                    // Формат mcsrvstat.us
+                    online = data.online === true;
+                    players = data.players?.online ?? 0;
+                } else if (data.status !== undefined) {
+                    // Формат mcapi.us
+                    online = data.status === true || data.status === 'online';
+                    players = data.players?.now ?? 0;
+                } else {
+                    throw new Error('Неизвестный формат ответа');
+                }
+
+                if (online) {
+                    el.textContent = players;
+                    console.log(`Успешно: сервер онлайн, игроков: ${players} (${url})`);
+                } else {
+                    el.textContent = 'Офлайн';
+                    console.log(`Сервер оффлайн (${url})`);
+                }
+
+                success = true;
+                break; // выходим, если получили корректный ответ
+
+            } catch (error) {
+                console.warn(`Ошибка с ${url}:`, error.message);
+                // продолжаем со следующим API
+            }
         }
+
+        if (!success) {
+            el.textContent = '?';
+            console.error('Все API недоступны');
+        }
+
+        el.classList.remove('updating');
     }
 
     window.addEventListener('DOMContentLoaded', () => {
         updateOnline();
-        setInterval(updateOnline, 10000);
+        setInterval(updateOnline, 15000); // каждые 15 секунд
     });
 </script>
 
