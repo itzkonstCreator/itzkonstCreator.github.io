@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HotCraft — Minecraft сервер</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Все стили уже здесь, внешний CSS не нужен */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
             background: #0b0e1a;
@@ -20,23 +16,9 @@
             display: flex;
             flex-direction: column;
         }
-
-        a {
-            color: #00d4ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #88eeff;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
+        a { color: #00d4ff; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #88eeff; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
         header {
             background: linear-gradient(135deg, #0b1a2e 0%, #0f2847 100%);
@@ -45,7 +27,6 @@
             box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
             text-align: center;
         }
-
         .logo h1 {
             font-size: 3.5rem;
             font-weight: 800;
@@ -57,7 +38,6 @@
             letter-spacing: 2px;
             margin-bottom: 5px;
         }
-
         .logo .tagline {
             font-size: 1.2rem;
             color: #88c8ff;
@@ -65,7 +45,6 @@
             font-weight: 300;
             letter-spacing: 4px;
         }
-
         .logo .ip {
             margin-top: 15px;
             font-size: 1.4rem;
@@ -76,7 +55,6 @@
             border: 1px solid rgba(0, 170, 255, 0.4);
             backdrop-filter: blur(4px);
         }
-
         .logo .ip code {
             background: none;
             color: #00d4ff;
@@ -84,7 +62,6 @@
             font-size: 1.3rem;
             letter-spacing: 1px;
         }
-
         .copy-btn {
             background: #00aaff;
             border: none;
@@ -97,15 +74,8 @@
             margin-left: 10px;
             transition: background 0.3s, transform 0.1s;
         }
-
-        .copy-btn:hover {
-            background: #66ddff;
-        }
-
-        .copy-btn:active {
-            transform: scale(0.95);
-        }
-
+        .copy-btn:hover { background: #66ddff; }
+        .copy-btn:active { transform: scale(0.95); }
         .copied-tooltip {
             background: #1a3a5a;
             color: #aaddff;
@@ -117,9 +87,7 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        .copied-tooltip.show {
-            opacity: 1;
-        }
+        .copied-tooltip.show { opacity: 1; }
 
         nav {
             margin-top: 25px;
@@ -128,7 +96,6 @@
             gap: 30px;
             flex-wrap: wrap;
         }
-
         nav a {
             font-weight: 500;
             color: #aacdff;
@@ -136,21 +103,13 @@
             border-bottom: 2px solid transparent;
             transition: 0.3s;
         }
-
         nav a:hover {
             color: #ffffff;
             border-bottom-color: #00aaff;
         }
 
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
-        }
-
+        section { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        section:last-of-type { border-bottom: none; }
         h2 {
             font-size: 2.2rem;
             font-weight: 600;
@@ -158,7 +117,6 @@
             position: relative;
             display: inline-block;
         }
-
         h2:after {
             content: '';
             position: absolute;
@@ -169,14 +127,25 @@
             background: linear-gradient(90deg, #00d4ff, #0088ff);
             border-radius: 4px;
         }
-
-        .section-center {
-            text-align: center;
-        }
-
+        .section-center { text-align: center; }
         .section-center h2:after {
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        .contacts-info {
+            background: rgba(0, 136, 255, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 12px;
+            padding: 18px 25px;
+            margin: 25px auto 10px;
+            max-width: 600px;
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+        .contacts-info a {
+            color: #66ddff;
+            font-weight: 600;
         }
 
         .donate-grid {
@@ -185,7 +154,6 @@
             gap: 25px;
             margin-top: 20px;
         }
-
         .donate-card {
             background: linear-gradient(145deg, #0f1a30, #162a4a);
             padding: 30px 20px;
@@ -195,13 +163,11 @@
             text-align: center;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
-
         .donate-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 30px rgba(0, 136, 255, 0.25);
             border-color: #00aaff;
         }
-
         .donate-card h3 {
             font-size: 1.8rem;
             font-weight: 700;
@@ -211,36 +177,28 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .donate-card .price {
             font-size: 1.6rem;
             font-weight: 700;
             color: #ffd966;
             margin: 10px 0;
         }
-
         .donate-card .price small {
             font-size: 1rem;
             font-weight: 400;
             color: #aab8d0;
         }
-
         .donate-card ul {
             list-style: none;
             text-align: left;
             margin-top: 15px;
             font-size: 0.95rem;
         }
-
         .donate-card ul li {
             padding: 5px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-
-        .donate-card ul li:last-child {
-            border-bottom: none;
-        }
-
+        .donate-card ul li:last-child { border-bottom: none; }
         .donate-card .btn {
             display: inline-block;
             margin-top: 20px;
@@ -254,7 +212,6 @@
             cursor: pointer;
             font-size: 1rem;
         }
-
         .donate-card .btn:hover {
             background: #44ccff;
             transform: scale(1.03);
@@ -266,7 +223,6 @@
             gap: 15px;
             margin-top: 15px;
         }
-
         .rules-list li {
             background: rgba(0, 136, 255, 0.06);
             padding: 12px 18px;
@@ -275,10 +231,7 @@
             list-style: none;
             font-weight: 400;
         }
-
-        .rules-list li strong {
-            color: #66ddff;
-        }
+        .rules-list li strong { color: #66ddff; }
 
         .stats {
             display: flex;
@@ -287,11 +240,9 @@
             gap: 40px;
             margin: 30px 0;
         }
-
         .stat-item {
             font-size: 1.2rem;
         }
-
         .stat-item .number {
             font-size: 2.8rem;
             font-weight: 700;
@@ -299,31 +250,13 @@
             display: block;
             line-height: 1.2;
         }
-
         .number.updating {
             animation: pulse 0.3s ease-in-out;
         }
-
         @keyframes pulse {
             0% { opacity: 1; }
             50% { opacity: 0.3; }
             100% { opacity: 1; }
-        }
-
-        .contacts-info {
-            background: rgba(0, 136, 255, 0.08);
-            border: 1px solid rgba(0, 170, 255, 0.3);
-            border-radius: 12px;
-            padding: 18px 25px;
-            margin: 25px auto 10px;
-            max-width: 600px;
-            display: inline-block;
-            font-size: 1.1rem;
-        }
-
-        .contacts-info a {
-            color: #66ddff;
-            font-weight: 600;
         }
 
         footer {
@@ -334,11 +267,7 @@
             margin-top: auto;
             color: #7a8aa8;
         }
-
-        footer a {
-            color: #88bbff;
-        }
-
+        footer a { color: #88bbff; }
         .social-links {
             margin: 10px 0 5px;
         }
@@ -358,7 +287,6 @@
 </head>
 <body>
 
-<!-- Шапка -->
 <header>
     <div class="container">
         <div class="logo">
@@ -379,7 +307,6 @@
     </div>
 </header>
 
-<!-- О сервере -->
 <section id="about">
     <div class="container section-center">
         <h2>О сервере</h2>
@@ -406,7 +333,6 @@
     </div>
 </section>
 
-<!-- Донат -->
 <section id="donate">
     <div class="container section-center">
         <h2>Донат-пакеты</h2>
@@ -414,7 +340,6 @@
             Поддержи сервер и получи эксклюзивные возможности!
         </p>
 
-        <!-- Контакты для покупки -->
         <div class="contacts-info">
             <strong>📩 Для покупки напишите в Telegram:</strong><br>
             <a href="https://t.me/itzkonstofficial" target="_blank">@itzkonstofficial</a>
@@ -423,7 +348,6 @@
         </div>
 
         <div class="donate-grid">
-            <!-- FLY -->
             <div class="donate-card">
                 <h3>FLY</h3>
                 <div class="price">30 <small>₽</small></div>
@@ -434,7 +358,6 @@
                 </ul>
                 <button class="btn" onclick="buyDonate('FLY', 30)">Приобрести</button>
             </div>
-            <!-- MEGA -->
             <div class="donate-card">
                 <h3>MEGA</h3>
                 <div class="price">50 <small>₽</small></div>
@@ -445,7 +368,6 @@
                 </ul>
                 <button class="btn" onclick="buyDonate('MEGA', 50)">Приобрести</button>
             </div>
-            <!-- ULTRA -->
             <div class="donate-card">
                 <h3>ULTRA</h3>
                 <div class="price">100 <small>₽</small></div>
@@ -456,7 +378,6 @@
                 </ul>
                 <button class="btn" onclick="buyDonate('ULTRA', 100)">Приобрести</button>
             </div>
-            <!-- CUSTOM -->
             <div class="donate-card">
                 <h3>CUSTOM</h3>
                 <div class="price">1500 <small>₽</small></div>
@@ -475,7 +396,6 @@
     </div>
 </section>
 
-<!-- Правила -->
 <section id="rules">
     <div class="container section-center">
         <h2>Правила сервера</h2>
@@ -490,7 +410,6 @@
     </div>
 </section>
 
-<!-- Контакты -->
 <section id="contacts">
     <div class="container section-center">
         <h2>Связь с нами</h2>
@@ -516,7 +435,6 @@
     </div>
 </section>
 
-<!-- Подвал -->
 <footer>
     <div class="container">
         <p>© 2026 HotCraft. Все права защищены.</p>
@@ -530,79 +448,41 @@
 </footer>
 
 <script>
-    // ===== Копирование IP =====
     function copyIP() {
         const ip = "hotcraftofc.aternos.me:33587";
         navigator.clipboard.writeText(ip).then(() => {
-            const feedback = document.getElementById('copyFeedback');
-            feedback.classList.add('show');
-            setTimeout(() => feedback.classList.remove('show'), 2000);
+            document.getElementById('copyFeedback').classList.add('show');
+            setTimeout(() => document.getElementById('copyFeedback').classList.remove('show'), 2000);
         }).catch(() => {
-            const textarea = document.createElement('textarea');
-            textarea.value = ip;
-            document.body.appendChild(textarea);
-            textarea.select();
+            const ta = document.createElement('textarea');
+            ta.value = ip;
+            document.body.appendChild(ta);
+            ta.select();
             document.execCommand('copy');
-            document.body.removeChild(textarea);
-            const feedback = document.getElementById('copyFeedback');
-            feedback.classList.add('show');
-            setTimeout(() => feedback.classList.remove('show'), 2000);
+            document.body.removeChild(ta);
+            document.getElementById('copyFeedback').classList.add('show');
+            setTimeout(() => document.getElementById('copyFeedback').classList.remove('show'), 2000);
         });
     }
 
-    // ===== Функция для кнопки "Приобрести" =====
-    function buyDonate(packageName, price) {
-        const message = `Для покупки пакета "${packageName}" (${price} ₽) напишите в Telegram:\n@itzkonstofficial или @Alex_Galka`;
-        alert(message);
+    function buyDonate(pkg, price) {
+        alert(`Для покупки пакета "${pkg}" (${price} ₽) напишите в Telegram:\n@itzkonstofficial или @Alex_Galka`);
     }
 
-    // ===== Онлайн (обновление каждые 5 секунд) =====
     async function updateOnline() {
         const el = document.getElementById('onlineCount');
-        const ip = 'hotcraftofc.aternos.me';
-        const port = 33587;
-
-        const apis = [
-            `https://api.mcsrvstat.us/3/${ip}:${port}`,
-            `http://mcapi.us/server/status?ip=${ip}&port=${port}`
-        ];
-
-        el.classList.add('updating');
-
-        for (const url of apis) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const data = await response.json();
-
-                let online = 0;
-                if (data.online !== undefined) {
-                    online = data.players?.online ?? 0;
-                } else if (data.status !== undefined) {
-                    online = data.players?.now ?? 0;
-                }
-
-                if (online > 0 || data.online === true) {
-                    el.textContent = online;
-                    el.classList.remove('updating');
-                    return;
-                } else {
-                    el.textContent = '0';
-                    el.classList.remove('updating');
-                    return;
-                }
-            } catch (error) {
-                // продолжаем
-            }
+        try {
+            const resp = await fetch(`https://api.mcsrvstat.us/3/hotcraftofc.aternos.me:33587`);
+            const data = await resp.json();
+            el.textContent = data.online ? data.players.online : '0';
+        } catch {
+            el.textContent = '?';
         }
-
-        el.textContent = '0';
-        el.classList.remove('updating');
     }
 
     window.addEventListener('DOMContentLoaded', () => {
         updateOnline();
-        setInterval(updateOnline, 5000);
+        setInterval(updateOnline, 10000);
     });
 </script>
 
