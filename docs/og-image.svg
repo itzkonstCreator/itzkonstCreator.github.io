@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b0f"/>
+      <stop offset="1" stop-color="#1a1a24"/>
+    </linearGradient>
+    <linearGradient id="logo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff4655"/>
+      <stop offset="1" stop-color="#ffae5e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.25" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="rgba(255,70,85,0.35)"/>
+      <stop offset="1" stop-color="rgba(255,70,85,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(120, 220)">
+    <path d="M96 0 L0 200 L86 200 L70 340 L160 130 L78 130 Z"
+          fill="url(#logo)" stroke="#fff" stroke-opacity="0.2"/>
+  </g>
+  <g fill="#fff" font-family="Montserrat, system-ui, sans-serif" font-weight="800">
+    <text x="370" y="320" font-size="92" letter-spacing="-2">1tzKonst</text>
+    <text x="370" y="400" font-size="34" font-weight="500" fill="#a0a5b5">ROBLOX скрипты · uncopylocked · WPM</text>
+    <text x="370" y="470" font-size="22" font-weight="600" fill="#ff4655" letter-spacing="2">⚡ IZKONSTCREATOR.GITHUB.IO</text>
+  </g>
+</svg>

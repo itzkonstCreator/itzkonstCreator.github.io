@@ -3,67 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | 1tzKonst</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <meta name="theme-color" content="#0b0b0f">
+
+  <title>О проекте — 1tzKonst</title>
+  <meta name="description" content="Кто такой 1tzKonst, какие инструменты делает и где с ним связаться.">
+  <link rel="canonical" href="https://itzkonstcreator.github.io/docs/about.html">
+
+  <meta property="og:title" content="О проекте — 1tzKonst">
+  <meta property="og:description" content="Кто такой 1tzKonst и что он делает.">
+  <meta property="og:type" content="profile">
+  <meta property="og:image" content="https://itzkonstcreator.github.io/docs/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="app.js" as="script">
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <header class="nav-header">
-    <div class="nav-content">
-      <a href="index.html" class="nav-logo">⚡ 1tzKonst</a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Главная</a>
-        <a href="https://github.com/itzkonstCreator" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
-        <a href="https://www.youtube.com/@Itzkonst" target="_blank" rel="noopener noreferrer" class="nav-link">YouTube</a>
-      </nav>
+  <main id="main" class="container page">
+
+    <div class="page-header reveal" style="--i:0">
+      <h1 class="page-title">👤 О проекте</h1>
+      <p class="page-subtitle">Разработчик ROBLOX-проектов и открытых инструментов.</p>
     </div>
-  </header>
-  
-  <div class="container" style="padding-top: 5rem;">
-    <a href="index.html" class="back-link">← Назад</a>
-    
-    <div class="page-header">
-      <h1 class="page-title">О проекте</h1>
-      <p class="page-subtitle">Узнайте больше о 1tzKonst</p>
-    </div>
-    
-    <div style="max-width: 700px; margin: 0 auto;">
-      <div class="card" style="max-width: 100%; text-align: left; padding: 2rem;">
-        <h2 style="margin-bottom: 1rem;">👤 Кто я?</h2>
-        <p style="margin-bottom: 1.5rem; line-height: 1.7;">
-          Привет! Я <strong>1tzKonst</strong> — разработчик ROBLOX проектов и скриптов. 
-          Создаю инструменты для упрощения разработки и экспериментов в ROBLOX.
-        </p>
-        
-        <h2 style="margin-bottom: 1rem;">🚀 Что здесь есть?</h2>
-        <ul style="margin-bottom: 1.5rem; line-height: 1.8; padding-left: 1.5rem;">
-          <li><strong>Uncopylocked Games</strong> — коллекция открытых игр для изучения</li>
-          <li><strong>Scripts</strong> — готовые скрипты для ROBLOX</li>
-          <li><strong>WPM Test</strong> — тест скорости печати</li>
-          <li><strong>YouTube</strong> — видео и туториалы</li>
-        </ul>
-        
-        <h2 style="margin-bottom: 1rem;">🛠️ Технологии</h2>
-        <p style="margin-bottom: 1.5rem; line-height: 1.7;">
-          HTML5, CSS3, JavaScript, Lua, ROBLOX Studio
-        </p>
-        
-        <h2 style="margin-bottom: 1rem;">📬 Контакты</h2>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="https://github.com/itzkonstCreator" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
-          <a href="https://www.youtube.com/@Itzkonst" target="_blank" rel="noopener noreferrer" class="btn" style="background: #ff0000; box-shadow: 0 6px 18px rgba(255, 0, 0, 0.5);">YouTube</a>
-        </div>
+
+    <article class="glass-card reveal" style="--i:1; max-width:760px">
+      <h2 style="margin-bottom:0.6rem">Привет, я 1tzKonst ⚡</h2>
+      <p style="color:var(--text-secondary); line-height:1.7">
+        Делаю ROBLOX-скрипты (Solara), собираю uncopylocked-игры и пишу мелкие веб-утилиты.
+        Люблю короткие решения, открытый код и интерфейсы, которые не мешают работать.
+      </p>
+
+      <h3 style="margin:1.4rem 0 0.4rem">🛠 Технологии</h3>
+      <div class="chip-grid" id="techChips">
+        <!-- filled by JS -->
       </div>
-    </div>
-  </div>
-  
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 1tzKonst. Все права защищены.</p>
-    </div>
-  </footer>
+
+      <h3 style="margin:1.4rem 0 0.4rem">🚀 Что здесь</h3>
+      <ul style="padding-left:1.2rem; line-height:1.8; color:var(--text-secondary)">
+        <li><strong>Uncopylocked</strong> — открытые ROBLOX-игры</li>
+        <li><strong>Scripts</strong> — готовые скрипты для Solara</li>
+        <li><strong>WPM Test</strong> — тест скорости печати с режимами и историей</li>
+        <li><strong>YouTube</strong> — видео и туториалы</li>
+      </ul>
+
+      <h3 style="margin:1.4rem 0 0.4rem">🕒 История</h3>
+      <ul class="timeline" id="timeline"></ul>
+
+      <h3 style="margin:1.4rem 0 0.4rem">📬 Контакты</h3>
+      <div class="about-actions">
+        <a class="btn github" href="https://github.com/itzkonstCreator" target="_blank" rel="noopener noreferrer">📦 GitHub</a>
+        <a class="btn youtube" href="https://www.youtube.com/@Itzkonst" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+      </div>
+    </article>
+
+  </main>
+
+  <script>
+    (async function () {
+      const esc = window.app.escapeHTML;
+      let data;
+      try { data = await window.app.loadData(); }
+      catch (e) { return; }
+
+      const tech = data.tech || ['HTML5', 'CSS3', 'JavaScript', 'Lua', 'ROBLOX Studio'];
+      document.getElementById('techChips').innerHTML = tech.map(t =>
+        '<span class="chip">' + esc(t) + '</span>'
+      ).join('');
+
+      const tl = data.timeline || [];
+      document.getElementById('timeline').innerHTML = tl.map(item =>
+        '<li><span class="tl-date">' + esc(item.date) + '</span><div>' + esc(item.label) + '</div></li>'
+      ).join('');
+    })();
+  </script>
 </body>
 </html>

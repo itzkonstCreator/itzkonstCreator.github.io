@@ -1,0 +1,19 @@
+{
+  "name": "1tzKonst",
+  "short_name": "1tzKonst",
+  "description": "ROBLOX скрипты, uncopylocked игры и инструменты",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0f",
+  "theme_color": "#ff4655",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}

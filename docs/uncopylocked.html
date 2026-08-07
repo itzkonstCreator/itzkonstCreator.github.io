@@ -3,131 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1tzKonst/UncopylockedGames</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta name="theme-color" content="#0b0b0f">
 
-    body {
-      background: #0f1117;
-      font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      color: #e0e0e0;
-    }
+  <title>Uncopylocked — 1tzKonst</title>
+  <meta name="description" content="Открытые для изучения и скачивания ROBLOX-игры (uncopylocked). Коллекция от 1tzKonst.">
+  <link rel="canonical" href="https://itzkonstcreator.github.io/docs/uncopylocked.html">
 
-    .container {
-      width: 100%;
-      max-width: 520px;
-      background: #1a1d26;
-      border-radius: 1.8rem;
-      padding: 2rem 1.8rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    }
+  <meta property="og:title" content="Uncopylocked — 1tzKonst">
+  <meta property="og:description" content="Открытые для изучения ROBLOX-игры.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://itzkonstcreator.github.io/docs/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
 
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 1.8rem;
-      text-align: center;
-      letter-spacing: -0.3px;
-    }
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
 
-    .game-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #22252f;
-      border-radius: 1rem;
-      padding: 1rem 1.3rem;
-      margin-bottom: 0.8rem;
-      transition: background 0.2s;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    .game-row:last-child {
-      margin-bottom: 0;
-    }
-
-    .game-row:hover {
-      background: #292d38;
-    }
-
-    .game-name {
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: #f3f4f6;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .uncopylocked-tag {
-      background: #f59e0b;
-      color: #0f0f0f;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.55rem;
-      border-radius: 0.35rem;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-    }
-
-    .download-link {
-      background: #f59e0b;
-      color: #0f0f0f;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 0.6rem 1.3rem;
-      border-radius: 2rem;
-      font-size: 0.9rem;
-      transition: 0.2s;
-      white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
-    }
-
-    .download-link:hover {
-      background: #fbbf24;
-      box-shadow: 0 6px 18px rgba(251, 191, 36, 0.5);
-    }
-  </style>
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="app.js" as="script">
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h1>1tzKonst/UncopylockedGames</h1>
+  <main id="main" class="container page">
 
-    <div class="game-row">
-      <div class="game-name">
-        Coco's Time Trial 2
-        <span class="uncopylocked-tag">uncopylocked</span>
-      </div>
-      <a href="https://drive.google.com/file/d/1-46g7aOlnrwkxvT4r_9yLRfLFMHkFFaK/view?usp=drive_link" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="download-link">
-        Скачать
-      </a>
+    <div class="page-header reveal" style="--i:0">
+      <h1 class="page-title">🎮 Uncopylocked Games</h1>
+      <p class="page-subtitle">Открытые ROBLOX-игры. Скачивай, изучай механики, переделывай под себя.</p>
     </div>
 
-    <div class="game-row">
-      <div class="game-name">
-        CatWeb
-        <span class="uncopylocked-tag">uncopylocked</span>
+    <section class="toolbar reveal" style="--i:1" aria-label="Поиск">
+      <div class="search-bar">
+        <span class="search-bar-icon" aria-hidden="true">🔍</span>
+        <input type="search" id="searchInput" placeholder="Поиск по названию…" aria-label="Поиск">
       </div>
-      <a href="https://drive.google.com/file/d/1PA74C5qrOFdid87NuTICWRHcrtwcddvy/view?usp=drive_link" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="download-link">
-        Скачать
-      </a>
-    </div>
-  </div>
+    </section>
+
+    <section id="gamesList" class="list" aria-label="Список игр" style="width:100%;max-width:760px;display:flex;flex-direction:column;gap:0.8rem">
+      <!-- skeletons -->
+      <div class="list-card skeleton" style="height:78px"></div>
+      <div class="list-card skeleton" style="height:78px"></div>
+      <div class="list-card skeleton" style="height:78px"></div>
+    </section>
+
+  </main>
+
+  <script>
+    (async function () {
+      const esc = window.app.escapeHTML;
+      const list = document.getElementById('gamesList');
+      const search = document.getElementById('searchInput');
+      let data;
+
+      try {
+        data = await window.app.loadData();
+      } catch (e) {
+        list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div>Не удалось загрузить список игр.</div>';
+        return;
+      }
+
+      function render(games) {
+        if (!games.length) {
+          list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔎</div>Ничего не найдено.</div>';
+          return;
+        }
+        list.innerHTML = games.map((g, i) => {
+          const tags = (g.tags || []).map(t => {
+            const cls = t === 'uncopylocked' ? 'tag--accent' : 'tag--blue';
+            return '<span class="tag ' + cls + '">' + esc(t) + '</span>';
+          }).join('');
+          return '<article class="list-card reveal" style="--i:' + i + '" data-title="' + esc(g.title.toLowerCase()) + '">' +
+            '<div>' +
+              '<div class="list-card-title">' +
+                '<span aria-hidden="true">🎮</span>' +
+                esc(g.title) +
+              '</div>' +
+              '<div class="list-card-meta">' + tags +
+                (g.added ? '<span class="tag">' + esc(g.added) + '</span>' : '') +
+              '</div>' +
+            '</div>' +
+            '<div class="list-card-actions">' +
+              '<a class="btn" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">⬇ Скачать <i>→</i></a>' +
+            '</div>' +
+          '</article>';
+        }).join('');
+        const io = new IntersectionObserver(es => es.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('reveal--in'); io.unobserve(e.target); }
+        }), { threshold: 0.05 });
+        list.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      }
+
+      const games = (data.games || []).slice().sort((a, b) => (b.added || '').localeCompare(a.added || ''));
+      render(games);
+
+      search.addEventListener('input', () => {
+        const q = (search.value || '').trim().toLowerCase();
+        render(games.filter(g => g.title.toLowerCase().includes(q)));
+      });
+    })();
+  </script>
 </body>
 </html>

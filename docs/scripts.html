@@ -1,304 +1,157 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROBLOX Scripts — itzkonstHub</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0f">
 
-        body {
-            background: #0b0e14;
-            color: #e0e6f0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 30px 20px;
-        }
+  <title>ROBLOX Scripts — 1tzKonst</title>
+  <meta name="description" content="Скрипты для ROBLOX (Solara). itzkonstHub — набор утилит. Копируй и используй в своих проектах.">
+  <link rel="canonical" href="https://itzkonstcreator.github.io/docs/scripts.html">
 
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: #1a1f2b;
-            border-radius: 24px;
-            padding: 35px 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid #2d3548;
-        }
+  <meta property="og:title" content="ROBLOX Scripts — 1tzKonst">
+  <meta property="og:description" content="Скрипты для ROBLOX (Solara).">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://itzkonstcreator.github.io/docs/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
 
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f0b3ff, #7aa9ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        .header-badge {
-            background: #2f3b57;
-            padding: 6px 18px;
-            border-radius: 60px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #b0c6f0;
-            border: 1px solid #3d4a6a;
-        }
-
-        .subtitle {
-            color: #8995b0;
-            font-size: 15px;
-            margin-bottom: 28px;
-            border-left: 3px solid #4c6b9c;
-            padding: 10px 16px;
-            background: #111720;
-            border-radius: 0 12px 12px 0;
-            line-height: 1.5;
-        }
-
-        .script-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .script-item {
-            background: #131a24;
-            border-radius: 16px;
-            padding: 18px 22px;
-            border: 1px solid #2b354a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            transition: 0.2s;
-        }
-
-        .script-item:hover {
-            border-color: #3d4a6a;
-            background: #161e2a;
-        }
-
-        .script-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .script-icon {
-            font-size: 22px;
-        }
-
-        .script-name {
-            font-weight: 600;
-            font-size: 17px;
-            color: #c8d2e6;
-        }
-
-        .script-tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            padding: 3px 12px;
-            border-radius: 60px;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .badge-purple {
-            background: #3d2a5a;
-            color: #c8a0f0;
-        }
-
-        .badge-green {
-            background: #1d5a3a;
-            color: #7ddfb0;
-        }
-
-        .badge-blue {
-            background: #1a3a5a;
-            color: #7aa9ff;
-        }
-
-        .script-actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            background: #29344b;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 13px;
-            color: #dce3f5;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid #38445f;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn:hover {
-            background: #364263;
-            transform: scale(1.02);
-        }
-
-        .btn-primary {
-            background: #4a6cf7;
-            border-color: #5f7cf8;
-            color: white;
-            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.2);
-        }
-
-        .btn-primary:hover {
-            background: #5f7cf8;
-        }
-
-        .btn-secondary {
-            background: #2a3450;
-            border-color: #3d4a6a;
-        }
-
-        .btn-secondary:hover {
-            background: #364263;
-        }
-
-        .status-bar {
-            margin-top: 24px;
-            background: #0d121c;
-            border-radius: 12px;
-            padding: 12px 18px;
-            font-size: 14px;
-            color: #7d8db0;
-            border: 1px solid #202a3c;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 10px;
-            background: #4a6cf7;
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        .status-dot.success {
-            background: #7ddfb0;
-        }
-
-        .status-text {
-            flex: 1;
-        }
-
-        .status-text.ok { color: #7ddfb0; }
-        .status-text.error { color: #f29b9b; }
-
-        @media (max-width: 600px) {
-            .container { padding: 16px; }
-            h1 { font-size: 22px; }
-            .script-item { padding: 14px 16px; flex-direction: column; align-items: stretch; }
-            .script-info { flex-wrap: wrap; }
-            .script-actions { justify-content: flex-start; }
-            .btn { padding: 6px 14px; font-size: 12px; }
-        }
-    </style>
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="app.js" as="script">
+  <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>📜 Scripts List</h1>
-            <span class="header-badge">⚡ 1 скрипт</span>
-        </div>
-        <div class="subtitle">
-            Список скриптов для ROBLOX. Нажми «Копировать», чтобы получить код.
-        </div>
+  <main id="main" class="container page">
 
-        <!-- Script List -->
-        <div class="script-list">
-            <!-- Script 1: itzkonstHub -->
-            <div class="script-item">
-                <div class="script-info">
-                    <span class="script-icon">🔮</span>
-                    <span class="script-name">itzkonstHub</span>
-                    <div class="script-tags">
-                        <span class="badge badge-purple">#OBFUSCATED</span>
-                        <span class="badge badge-green">v1.0</span>
-                    </div>
-                </div>
-                <div class="script-actions">
-                    <button class="btn btn-secondary" onclick="copyScript()">📋 Копировать</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Status -->
-        <div class="status-bar">
-            <span class="status-dot success" id="statusDot"></span>
-            <span class="status-text ok" id="statusText">✅ Готово. Нажми «Копировать», чтобы получить код.</span>
-        </div>
+    <div class="page-header reveal" style="--i:0">
+      <h1 class="page-title">📜 ROBLOX Scripts</h1>
+      <p class="page-subtitle">Скрипты для ROBLOX (Solara). Нажми <span class="kbd">Копировать</span>, чтобы получить код.</p>
     </div>
 
-    <script>
-        const SCRIPT_CODE = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/itzkonstCreator/itzkonstCreator.github.io/refs/heads/main/docs/itzkonsthub.lua", true))()';
+    <section id="scriptList" class="list" aria-label="Список скриптов" style="width:100%;max-width:760px;display:flex;flex-direction:column;gap:0.8rem">
+      <div class="list-card skeleton" style="height:120px"></div>
+    </section>
 
-        const statusText = document.getElementById('statusText');
-        const statusDot = document.getElementById('statusDot');
+  </main>
 
-        function setStatus(text, isOk = true) {
-            statusText.textContent = text;
-            statusText.className = 'status-text ' + (isOk ? 'ok' : 'error');
-            statusDot.className = 'status-dot ' + (isOk ? 'success' : 'error');
+  <script>
+    (async function () {
+      const esc = window.app.escapeHTML;
+      const list = document.getElementById('scriptList');
+
+      async function copyText(text, btn) {
+        try {
+          await navigator.clipboard.writeText(text);
+          window.app.toast('✓ Код скопирован в буфер обмена', { kind: 'ok' });
+        } catch (e) {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); window.app.toast('✓ Скопировано', { kind: 'ok' }); }
+          catch (_) { window.app.toast('✗ Не удалось скопировать', { kind: 'err' }); }
+          ta.remove();
         }
-
-        function copyScript() {
-            navigator.clipboard.writeText(SCRIPT_CODE).then(() => {
-                setStatus('✅ Код скопирован в буфер обмена!', true);
-            }).catch(() => {
-                // Fallback
-                const textarea = document.createElement('textarea');
-                textarea.value = SCRIPT_CODE;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                setStatus('✅ Код скопирован (старый метод).', true);
-            });
+        if (btn) {
+          const orig = btn.innerHTML;
+          btn.innerHTML = '✓ Готово';
+          setTimeout(() => btn.innerHTML = orig, 1200);
         }
+      }
 
-        // Стартовое сообщение
-        setStatus('✅ Готово. Нажми «Копировать», чтобы получить код.', true);
-    </script>
+      let data;
+      try {
+        data = await window.app.loadData();
+      } catch (e) {
+        list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div>Не удалось загрузить список скриптов.</div>';
+        return;
+      }
+
+      const scripts = data.scripts || [];
+      if (!scripts.length) {
+        list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🪄</div>Здесь скоро появятся скрипты.</div>';
+        return;
+      }
+
+      list.innerHTML = scripts.map((s, i) => {
+        const tags = (s.tags || []).map(t => {
+          const cls =
+            t === 'obfuscated' ? 'tag--accent' :
+            t === 'solara'     ? 'tag--blue'   :
+            t === 'lua'        ? 'tag--purple' : 'tag--green';
+          return '<span class="tag ' + cls + '">' + esc(t) + '</span>';
+        }).join('');
+        const safeCode = esc(s.code);
+        return '<article class="list-card reveal" style="--i:' + i + '" data-id="' + esc(s.id) + '">' +
+          '<div style="flex:1 1 100%;min-width:240px">' +
+            '<div class="list-card-title">' +
+              '<span aria-hidden="true">' + (s.icon || '🔮') + '</span>' +
+              esc(s.name) +
+              (s.version ? '<span class="tag tag--green">v' + esc(s.version) + '</span>' : '') +
+            '</div>' +
+            (s.description ? '<div class="list-card-meta" style="margin-top:0.3rem">' + esc(s.description) + '</div>' : '') +
+            '<div class="list-card-meta" style="margin-top:0.4rem">' + tags +
+              (s.updated ? '<span class="tag">' + esc(s.updated) + '</span>' : '') +
+            '</div>' +
+            '<div class="code-preview" data-collapsed>' +
+              '<div class="code-preview-header">' +
+                '<span>Lua · loadstring</span>' +
+                '<button class="btn btn-ghost btn-sm" data-toggle style="padding:0.25rem 0.7rem;font-size:0.8rem">Развернуть</button>' +
+              '</div>' +
+              '<pre><code>' + safeCode + '</code></pre>' +
+            '</div>' +
+          '</div>' +
+          '<div class="list-card-actions">' +
+            '<button class="btn btn-primary" data-copy>📋 Копировать код</button>' +
+            '<button class="btn btn-ghost" data-toggle-2>👁 Показать код</button>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('reveal--in'); io.unobserve(e.target); }
+      }), { threshold: 0.05 });
+      list.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      list.addEventListener('click', (ev) => {
+        const card = ev.target.closest('.list-card');
+        if (!card) return;
+        const id = card.dataset.id;
+        const script = scripts.find(s => s.id === id);
+        if (!script) return;
+        const preview = card.querySelector('.code-preview');
+
+        if (ev.target.closest('[data-copy]')) {
+          copyText(script.code, ev.target.closest('[data-copy]'));
+        } else if (ev.target.closest('[data-toggle]') || ev.target.closest('[data-toggle-2]')) {
+          const isCollapsed = preview.hasAttribute('data-collapsed');
+          if (isCollapsed) {
+            preview.removeAttribute('data-collapsed');
+            preview.classList.remove('is-collapsed');
+            card.querySelector('[data-toggle]').textContent = 'Свернуть';
+            card.querySelector('[data-toggle-2]').textContent = '🙈 Скрыть код';
+          } else {
+            preview.setAttribute('data-collapsed', '');
+            preview.classList.add('is-collapsed');
+            card.querySelector('[data-toggle]').textContent = 'Развернуть';
+            card.querySelector('[data-toggle-2]').textContent = '👁 Показать код';
+          }
+        }
+      });
+    })();
+  </script>
+
+  <style>
+    .btn-sm { padding: 0.25rem 0.7rem !important; font-size: 0.8rem !important; }
+  </style>
 </body>
 </html>

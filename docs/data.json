@@ -1,0 +1,60 @@
+{
+  "site": {
+    "name": "1tzKonst",
+    "title": "1tzKonst — ROBLOX скрипты, uncopylocked игры и инструменты",
+    "description": "Официальный сайт 1tzKonst. ROBLOX скрипты (Solara), uncopylocked игры, WPM-тест и открытые инструменты.",
+    "author": "1tzKonst",
+    "github": "https://github.com/itzkonstCreator",
+    "youtube": "https://www.youtube.com/@Itzkonst",
+    "email": ""
+  },
+  "stats": {
+    "games": 2,
+    "scripts": 1,
+    "wpmWords": 466550,
+    "stars": 0
+  },
+  "games": [
+    {
+      "id": "cocos-time-trial-2",
+      "title": "Coco's Time Trial 2",
+      "tag": "uncopylocked",
+      "size": "—",
+      "url": "https://drive.google.com/file/d/1-46g7aOlnrwkxvT4r_9yLRfLFMHkFFaK/view?usp=drive_link",
+      "added": "2026-08-01",
+      "tags": ["uncopylocked", "roblox"]
+    },
+    {
+      "id": "catweb",
+      "title": "CatWeb",
+      "tag": "uncopylocked",
+      "size": "—",
+      "url": "https://drive.google.com/file/d/1PA74C5qrOFdid87NuTICWRHcrtwcddvy/view?usp=drive_link",
+      "added": "2026-08-01",
+      "tags": ["uncopylocked", "roblox"]
+    }
+  ],
+  "scripts": [
+    {
+      "id": "itzkonsthub",
+      "name": "itzkonstHub",
+      "icon": "🔮",
+      "version": "1.0",
+      "tags": ["obfuscated", "solara", "lua"],
+      "description": "Главный скрипт с набором утилит. Загружается строкой loadstring().",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/itzkonstCreator/itzkonstCreator.github.io/refs/heads/main/docs/itzkonsthub.lua\", true))()",
+      "updated": "2026-08-01"
+    }
+  ],
+  "tech": [
+    "HTML5", "CSS3", "JavaScript", "Lua",
+    "ROBLOX Studio", "GitHub Pages",
+    "Solara", "HTTP", "REST"
+  ],
+  "timeline": [
+    { "date": "2026-08", "label": "Редизайн сайта: единая дизайн-система, PWA, поиск и фильтры." },
+    { "date": "2026-07", "label": "itzkonstHub v1.0 — набор утилит для Solara." },
+    { "date": "2026-06", "label": "WPM-тест: одно слово за раунд, стриминг words.txt." },
+    { "date": "2026-05", "label": "Открыты для скачивания первые uncopylocked игры." }
+  ]
+}
