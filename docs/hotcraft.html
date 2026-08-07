@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotCraft — Minecraft сервер</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #0b0e1a;
+            color: #e0e6f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: #00d4ff; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #88eeff; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+        header {
+            background: linear-gradient(135deg, #0b1a2e 0%, #0f2847 100%);
+            padding: 40px 0 20px 0;
+            border-bottom: 2px solid #00aaff;
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
+            text-align: center;
+        }
+        .logo h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00d4ff, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(0, 136, 255, 0.3);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        .logo .tagline {
+            font-size: 1.2rem;
+            color: #88c8ff;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+        .logo .ip {
+            margin-top: 15px;
+            font-size: 1.4rem;
+            background: rgba(0, 136, 255, 0.15);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 170, 255, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        .logo .ip code {
+            background: none;
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+        .copy-btn {
+            background: #00aaff;
+            border: none;
+            color: #0b0e1a;
+            font-weight: 700;
+            padding: 5px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            transition: background 0.3s, transform 0.1s;
+        }
+        .copy-btn:hover { background: #66ddff; }
+        .copy-btn:active { transform: scale(0.95); }
+        .copied-tooltip {
+            background: #1a3a5a;
+            color: #aaddff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .copied-tooltip.show { opacity: 1; }
+
+        nav {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            font-weight: 500;
+            color: #aacdff;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+            border-bottom-color: #00aaff;
+        }
+
+        section { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        section:last-of-type { border-bottom: none; }
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #0088ff);
+            border-radius: 4px;
+        }
+        .section-center { text-align: center; }
+        .section-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .contacts-info {
+            background: rgba(0, 136, 255, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 12px;
+            padding: 18px 25px;
+            margin: 25px auto 10px;
+            max-width: 600px;
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+        .contacts-info a {
+            color: #66ddff;
+            font-weight: 600;
+        }
+
+        .donate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .donate-card {
+            background: linear-gradient(145deg, #0f1a30, #162a4a);
+            padding: 30px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 170, 255, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        .donate-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 136, 255, 0.25);
+            border-color: #00aaff;
+        }
+        .donate-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #00ccff, #0077ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .donate-card .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffd966;
+            margin: 10px 0;
+        }
+        .donate-card .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #aab8d0;
+        }
+        .donate-card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .donate-card ul li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .donate-card ul li:last-child { border-bottom: none; }
+        .donate-card .btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: #00aaff;
+            color: #0b0e1a;
+            font-weight: 700;
+            padding: 10px 25px;
+            border-radius: 40px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .donate-card .btn:hover {
+            background: #44ccff;
+            transform: scale(1.03);
+        }
+
+        .about-text {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 1.15rem;
+            color: #b8c8e8;
+        }
+
+        footer {
+            background: #060a14;
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid #1a2a44;
+            margin-top: auto;
+            color: #7a8aa8;
+        }
+        footer a { color: #88bbff; }
+        .social-links {
+            margin: 10px 0 5px;
+        }
+        .social-links a {
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .logo h1 { font-size: 2.6rem; }
+            .logo .ip { font-size: 1.0rem; padding: 8px 16px; }
+            .donate-grid { grid-template-columns: 1fr; }
+            nav { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <h1>HotCraft</h1>
+            <div class="tagline">✦ Лучший выживание-сервер ✦</div>
+            <div class="ip">
+                <code>hotcraftofc.aternos.me:33587</code>
+                <button class="copy-btn" onclick="copyIP()">Копировать</button>
+                <span id="copyFeedback" class="copied-tooltip">Скопировано!</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#about">О сервере</a>
+            <a href="#donate">Донат</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<section id="about">
+    <div class="container section-center">
+        <h2>О сервере</h2>
+        <p class="about-text">
+            <strong>HotCraft</strong> — это уютный выживание-сервер с дружелюбным сообществом,
+            активной администрацией и уникальной системой донатов.
+            Здесь ты найдёшь честную игру, защиту от гриферов и множество возможностей для развития!
+        </p>
+        <p style="margin-top: 20px; color: #88aacc;">
+            IP: <strong style="color:#00d4ff;">hotcraftofc.aternos.me:33587</strong>
+        </p>
+        <p style="color: #88aacc;">
+            Сервер работает круглосуточно, поддерживает версию 1.20+
+        </p>
+    </div>
+</section>
+
+<section id="donate">
+    <div class="container section-center">
+        <h2>Донат-пакеты</h2>
+        <p style="max-width: 600px; margin: 0 auto 20px; color: #b0c8e0;">
+            Поддержи сервер и получи эксклюзивные возможности!
+        </p>
+
+        <div class="contacts-info">
+            <strong>📩 Для покупки напишите в Telegram:</strong><br>
+            <a href="https://t.me/itzkonstofficial" target="_blank">@itzkonstofficial</a>
+            &nbsp;или&nbsp;
+            <a href="https://t.me/Alex_Galka" target="_blank">@Alex_Galka</a>
+        </div>
+
+        <div class="donate-grid">
+            <div class="donate-card">
+                <h3>FLY</h3>
+                <div class="price">30 <small>₽</small></div>
+                <ul>
+                    <li>✓ /fly</li>
+                    <li>✓ /ec (открыть эндер-сундук)</li>
+                    <li>✓ /jail (кинуть в тюрьму)</li>
+                </ul>
+                <button class="btn" onclick="buyDonate('FLY', 30)">Приобрести</button>
+            </div>
+            <div class="donate-card">
+                <h3>MEGA</h3>
+                <div class="price">50 <small>₽</small></div>
+                <ul>
+                    <li>✓ /tp (телепорт к игроку)</li>
+                    <li>✓ /near (список игроков рядом)</li>
+                    <li>✓ Все привилегии FLY</li>
+                </ul>
+                <button class="btn" onclick="buyDonate('MEGA', 50)">Приобрести</button>
+            </div>
+            <div class="donate-card">
+                <h3>ULTRA</h3>
+                <div class="price">100 <small>₽</small></div>
+                <ul>
+                    <li>✓ /setwarp (установить варп)</li>
+                    <li>✓ /craft (верстак в любом месте)</li>
+                    <li>✓ Все привилегии MEGA</li>
+                </ul>
+                <button class="btn" onclick="buyDonate('ULTRA', 100)">Приобрести</button>
+            </div>
+            <div class="donate-card">
+                <h3>CUSTOM</h3>
+                <div class="price">1500 <small>₽</small></div>
+                <ul>
+                    <li>✓ /op (полный доступ)</li>
+                    <li>✓ Все права администратора</li>
+                    <li>✓ Эксклюзивный статус</li>
+                </ul>
+                <button class="btn" onclick="buyDonate('CUSTOM', 1500)">Приобрести</button>
+            </div>
+        </div>
+
+        <p style="margin-top: 25px; font-size: 0.9rem; color: #7a8aa8;">
+            * Донат выдаётся навсегда. Цены указаны в российских рублях (₽).
+        </p>
+    </div>
+</section>
+
+<section id="contacts">
+    <div class="container section-center">
+        <h2>Связь с нами</h2>
+        <p style="margin: 15px 0 25px;">Возникли вопросы? Пиши!</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;">
+            <div>
+                <strong>Telegram</strong><br>
+                <a href="https://t.me/itzkonstofficial" target="_blank">@itzkonstofficial</a>
+            </div>
+            <div>
+                <strong>Telegram</strong><br>
+                <a href="https://t.me/Alex_Galka" target="_blank">@Alex_Galka</a>
+            </div>
+            <div>
+                <strong>Email</strong><br>
+                <a href="mailto:itzkonst8@gmail.com">itzkonst8@gmail.com</a>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.9rem;">
+            Администрация всегда на связи!<br>
+            <span style="color:#00aaff;">Наш IP: hotcraftofc.aternos.me:33587</span>
+        </p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 HotCraft. Все права защищены.</p>
+        <div class="social-links">
+            <a href="https://t.me/itzkonstofficial" target="_blank">Telegram (Konst)</a>
+            <a href="https://t.me/Alex_Galka" target="_blank">Telegram (Alex)</a>
+            <a href="mailto:itzkonst8@gmail.com">Email</a>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 8px;">Сделано с ❤️ для игроков HotCraft</p>
+    </div>
+</footer>
+
+<script>
+    function copyIP() {
+        const ip = "hotcraftofc.aternos.me:33587";
+        navigator.clipboard.writeText(ip).then(() => {
+            document.getElementById('copyFeedback').classList.add('show');
+            setTimeout(() => document.getElementById('copyFeedback').classList.remove('show'), 2000);
+        }).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = ip;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            document.getElementById('copyFeedback').classList.add('show');
+            setTimeout(() => document.getElementById('copyFeedback').classList.remove('show'), 2000);
+        });
+    }
+
+    function buyDonate(pkg, price) {
+        alert(`Для покупки пакета "${pkg}" (${price} ₽) напишите в Telegram:\n@itzkonstofficial или @Alex_Galka`);
+    }
+</script>
+
+</body>
+</html>
