@@ -1,11 +1,20 @@
 /* index.html — render project grid, stats, search, filter */
-(async function () {
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, c => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    })[c]);
-  }
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[c]);
+}
 
+function whenAppReady(cb) {
+  if (window.app) { cb(); return; }
+  let n = 0;
+  const t = setInterval(() => {
+    if (window.app) { clearInterval(t); cb(); }
+    else if (++n > 50) { clearInterval(t); cb(); } // give up after ~5s, run anyway
+  }, 100);
+}
+
+(async function main() {
   let data;
   try {
     data = await window.app.loadData();
@@ -117,4 +126,6 @@
     applyFilter();
   }));
   searchInput.addEventListener('input', applyFilter);
-})();
+}
+
+whenAppReady(main);
