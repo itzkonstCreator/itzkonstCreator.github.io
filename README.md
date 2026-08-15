@@ -82,3 +82,6 @@ MIT License — see [LICENSE](LICENSE) file for details.
 
 - GitHub: [itzkonstCreator](https://github.com/itzkonstCreator)
 - YouTube: [@Itzkonst](https://www.youtube.com/@Itzkonst)
+
+
+[![Skin-Aleks-Galka.png](https://i.postimg.cc/s2fwfKFV/Skin-Aleks-Galka.png)](https://postimg.cc/873htRP3)
